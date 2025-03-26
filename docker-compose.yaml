@@ -1,20 +1,16 @@
 version: '3'
 
 services:
+  # 서비스 이름
   mysql:
+    # 이미지 버전
     image: mysql:8.0
-    container_name: mysql
+    # 컨테이너 이름
+    container_name: nestjs-boilerplate-mysql
+    # 재시작 정책
     restart: always
+    # 환경 변수
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: nestjs
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: hellopassword
     ports:
       - '3306:3306'
-    volumes:
-      - mysql_data:/var/lib/mysql
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-
-volumes:
-  mysql_data:
