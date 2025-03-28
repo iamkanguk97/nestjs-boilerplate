@@ -3,6 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './apis/users/user.module';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { TypeOrmConfigService } from './database/typeorm-config.service';
+import { ConfigModule } from '@nestjs/config';
+import databaseConfig from './database/config/database.config';
 
 @Module({
   imports: [
@@ -14,6 +16,11 @@ import { TypeOrmConfigService } from './database/typeorm-config.service';
         }
         return await new DataSource(options).initialize();
       },
+    }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: '.env',
+      load: [databaseConfig],
     }),
     UserModule,
   ],
