@@ -1,16 +1,15 @@
-version: '3'
-
 services:
   # 서비스 이름
   mysql:
     # 이미지 버전
     image: mysql:8.0
     # 컨테이너 이름
-    container_name: nestjs-boilerplate-mysql
+    container_name: nestjs-boilerplate-mysql2
     # 재시작 정책
     restart: always
     # 환경 변수
     environment:
-      MYSQL_ROOT_PASSWORD: hellopassword
+      MYSQL_ROOT_PASSWORD: hellopassword2
+      MYSQL_DATABASE: nestjs-boilerplate-db2
     ports:
       - '3306:3306'
