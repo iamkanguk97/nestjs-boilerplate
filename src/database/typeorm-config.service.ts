@@ -1,18 +1,29 @@
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
-import { User } from 'src/apis/users/models/user';
+import { IConfig } from 'src/config/config.type';
 
 @Injectable()
 export class TypeOrmConfigService implements TypeOrmOptionsFactory {
-  createTypeOrmOptions(): TypeOrmModuleOptions {
+  constructor(private readonly configService: ConfigService<IConfig>) {}
+
+  /**
+   * Create TypeORM Options
+   *
+   * @author Jason
+   */
+  public createTypeOrmOptions(): TypeOrmModuleOptions {
+    const databaseConfig = this.configService.getOrThrow('database', { infer: true });
+    const { type, host, port, username, password, database, synchronize } = databaseConfig;
+
     return {
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'hellopassword2',
-      database: 'nestjs-boilerplate-db2',
-      entities: [User],
+      type,
+      host,
+      port,
+      username,
+      password,
+      synchronize,
+      database,
     };
   }
 }

@@ -7,9 +7,12 @@ services:
     container_name: nestjs-boilerplate-mysql2
     # 재시작 정책
     restart: always
+    # ENV FILE
+    env_file:
+      - ./.env
     # 환경 변수
     environment:
-      MYSQL_ROOT_PASSWORD: hellopassword2
-      MYSQL_DATABASE: nestjs-boilerplate-db2
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
     ports:
       - '3306:3306'

@@ -25,6 +25,15 @@ Also, this project referenced [brocoders's nestjs boilerplate](https://github.co
 - [ ] Social sign in (Google, Naver, Kakao etc.)
 - [ ] File Uploads. Support Local File-System and Amazon S3 Drivers with Presigned-URL
 
+## Test Environment Variable
+
+```
+DATABASE_HOST=localhost
+DATABASE_PASSWORD=nestjsboilerplatepwd^^
+DATABASE_NAME=nestjs-boilerplate-db
+DATABASE_USERNAME=root
+```
+
 ## Contact
 
 If you have any queestions or comments regarding features you would like to see added or issues that you're experiencing, please contact to [iamkangukii.dev@gmail.com](mailto:iamkangukii.dev@gmail.com).
