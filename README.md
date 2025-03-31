@@ -12,11 +12,12 @@ Also, this project referenced [brocoders's nestjs boilerplate](https://github.co
 ## ToC (Table of Contents)
 
 - [Features](#features)
+- [Test Environment Variables](#test-environment-variables)
 
 ## Features
 
 - [ ] Database (PostgreSQL, Prisma)
-- [ ] Type-Safe Config Service
+- [X] Type-Safe Config Service
 - [ ] Mailing (Nodemailer)
 - [ ] SMS Verification (Cool-SMS)
 - [ ] API Docs with Swagger
@@ -25,7 +26,7 @@ Also, this project referenced [brocoders's nestjs boilerplate](https://github.co
 - [ ] Social sign in (Google, Naver, Kakao etc.)
 - [ ] File Uploads. Support Local File-System and Amazon S3 Drivers with Presigned-URL
 
-## Test Environment Variable
+## Test Environment Variables
 
 ```
 DATABASE_HOST=localhost
