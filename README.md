@@ -37,4 +37,4 @@ DATABASE_USERNAME=root
 
 ## Contact
 
-If you have any queestions or comments regarding features you would like to see added or issues that you're experiencing, please contact to [iamkangukii.dev@gmail.com](mailto:iamkangukii.dev@gmail.com).
+If you have any questions or comments regarding features you would like to see added or issues that you're experiencing, please contact to [iamkangukii.dev@gmail.com](mailto:iamkangukii.dev@gmail.com).
