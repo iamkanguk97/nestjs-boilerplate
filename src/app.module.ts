@@ -4,7 +4,7 @@ import { UserModule } from './apis/users/user.module';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { TypeOrmConfigService } from './database/typeorm-config.service';
 import { ConfigModule } from '@nestjs/config';
-import databaseConfig from './database/config/database.config';
+import databaseConfig from './config/database.config';
 
 @Module({
   imports: [
@@ -19,7 +19,7 @@ import databaseConfig from './database/config/database.config';
     }),
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: '.env',
+      envFilePath: ['.env'],
       load: [databaseConfig],
     }),
     UserModule,
