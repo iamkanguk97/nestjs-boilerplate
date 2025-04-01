@@ -16,7 +16,7 @@ Also, this project referenced [brocoders's nestjs boilerplate](https://github.co
 
 ## Features
 
-- [ ] Database (PostgreSQL, Prisma)
+- [ ] Database (Part1: MySQL + TypeORM / Part2: PostgreSQL + Prisma)
 - [X] Type-Safe Config Service
 - [ ] Mailing (Nodemailer)
 - [ ] SMS Verification (Cool-SMS)
