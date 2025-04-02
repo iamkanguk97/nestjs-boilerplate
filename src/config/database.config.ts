@@ -1,6 +1,7 @@
 import { Config } from './config.type';
 import { registerAs } from '@nestjs/config';
 import { IsBoolean, IsInt, IsOptional, IsString, Max, Min, ValidateIf } from 'class-validator';
+import { UserEntity } from 'src/apis/user/entities/user.entity';
 import { ConfigUtil } from 'src/utils/config.util';
 
 class DatabaseEnvironmentVariableValidator {
@@ -53,5 +54,7 @@ export default registerAs<Config.IDatabase>('database', () => {
     name: process.env.DATABASE_NAME,
     username: process.env.DATABASE_USERNAME,
     synchronize: process.env.DATABASE_SYNCHRONIZE === 'true',
+    logging: process.env.NODE_ENV !== 'production',
+    entities: [UserEntity],
   };
 });
