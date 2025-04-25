@@ -5,6 +5,7 @@ import { DataSource, DataSourceOptions } from 'typeorm';
 import { TypeOrmConfigService } from './database/typeorm-config.service';
 import { ConfigModule } from '@nestjs/config';
 import databaseConfig from './config/database.config';
+import { AuthModule } from './apis/auth/auth.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import databaseConfig from './config/database.config';
       load: [databaseConfig],
     }),
     UserModule,
+    AuthModule
   ],
   controllers: [],
   providers: [],
