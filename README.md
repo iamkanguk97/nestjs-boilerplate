@@ -13,6 +13,7 @@ Also, this project referenced [brocoders's nestjs boilerplate](https://github.co
 
 - [Features](#features)
 - [Test Environment Variables](#test-environment-variables)
+- [Contact](#contact)
 
 ## Features
 
