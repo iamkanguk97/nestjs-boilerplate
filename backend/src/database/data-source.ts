@@ -14,8 +14,8 @@ const dataSource = new DataSource({
   username: process.env.DATABASE_USERNAME,
   synchronize: false,
   logging: process.env.NODE_ENV !== 'production',
-  entities: [path.join(__dirname, '../apis/**/*.entity.ts')],
-  migrations: [path.join(__dirname, 'migrations/*.ts')],
+  entities: [path.join(__dirname, '../modules/**/*.entity.ts')],
+  migrations: [path.join(__dirname, '../database/migrations/*.ts')],
   migrationsTableName: 'migrations',
 });
 
