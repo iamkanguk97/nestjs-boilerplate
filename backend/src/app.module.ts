@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserModule } from './apis/user/user.module';
+import { UserModule } from './modules/user/user.module';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { TypeOrmConfigService } from './database/typeorm-config.service';
 import { ConfigModule } from '@nestjs/config';
 import databaseConfig from './config/database.config';
-import { AuthModule } from './apis/auth/auth.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -24,7 +24,7 @@ import { AuthModule } from './apis/auth/auth.module';
       load: [databaseConfig],
     }),
     UserModule,
-    AuthModule
+    AuthModule,
   ],
   controllers: [],
   providers: [],
