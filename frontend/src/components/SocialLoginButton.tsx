@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { SocialProvider } from '../types/auth';
 import { socialLogin } from '../services/authService';
 
-// Google 로고 이미지
 import GoogleLogo from '../assets/images/google-logo.png';
 import KakaoLogo from '../assets/images/kakao-logo.png';
 import NaverLogo from '../assets/images/naver-logo.png';
@@ -94,7 +93,7 @@ const StyledButton = styled.button<ButtonProps>`
     background-color: ${props => props.backgroundColor};
     color: ${props => props.color};
     border: 1px solid ${props => props.borderColor};
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     transition: all 0.3s ease;
 

@@ -4,15 +4,15 @@ import LoginPage from './pages/LoginPage';
 import AuthCallbackPage from './pages/AuthCallbackPage';
 
 function App() {
-  return (
-    <Router>
-      <GlobalStyle />
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/auth/:provider/callback" element={<AuthCallbackPage />} />
-      </Routes>
-    </Router>
-  );
+    return (
+        <Router>
+            <GlobalStyle />
+            <Routes>
+                <Route path="/" element={<LoginPage />} />
+                <Route path="/auth/:provider" element={<AuthCallbackPage />} />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
