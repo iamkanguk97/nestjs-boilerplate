@@ -7,6 +7,14 @@ async function bootstrap() {
 
   app.enableShutdownHooks();
 
+  /**
+   * If you are developing up to production level using this project, please set the CORS path.
+   */
+  app.enableCors({
+    origin: '*',
+    credentials: true,
+  });
+
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
