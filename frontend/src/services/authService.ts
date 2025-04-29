@@ -1,3 +1,4 @@
+import ky, { HTTPError } from 'ky';
 import { AuthConfig, AuthProviders, SocialProvider } from '../types/auth';
 
 // 각 소셜 로그인 제공업체의 설정
@@ -50,13 +51,55 @@ export const generateAuthUrl = (provider: SocialProvider) => {
 // 소셜 로그인 실행
 export const socialLogin = (provider: SocialProvider): void => {
     const authUrl = generateAuthUrl(provider);
+    console.log(authUrl);
     window.location.href = authUrl;
 };
 
 // 인증 코드 처리
 export const handleAuthCode = async (provider: SocialProvider, code: string) => {
-    // 여기서는 단순히 코드를 콘솔에 출력합니다.
-    // 실제 구현에서는 백엔드로 코드를 전송하여 토큰 교환을 처리합니다.
-    console.log(`${provider} 인증 코드:`, code);
-    return { provider, code };
+    // 백엔드 API 엔드포인트 URL
+    // const backendApiUrl = `/api/auth/${provider}/callback`;
+    const backendApiUrl = `http://localhost:8000/auth/social-login/${provider}`;
+
+    try {
+        // 백엔드로 인증 코드를 POST 요청으로 전송 (ky 사용)
+        const result = await ky
+            .post(backendApiUrl, {
+                json: { socialAuthCode: code }, // 요청 본문에 인증 코드 포함 (ky가 자동으로 직렬화)
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .json(); // 응답을 JSON으로 파싱
+
+        // 콘솔에 결과 로깅 (디버깅 목적)
+        console.log(`${provider} 인증 성공:`, result);
+
+        // 백엔드에서 받은 결과 반환 (실제 반환 타입에 맞게 단언 또는 검증 필요)
+        return result;
+    } catch (error: unknown) {
+        // catch 블록의 error 타입을 unknown으로 명시
+        console.error(`${provider} 인증 처리 중 오류 발생:`, error);
+
+        // ky의 HTTPError 인스턴스인지 확인 (HTTPError 직접 사용)
+        if (error instanceof HTTPError) {
+            try {
+                // 오류 응답 본문을 텍스트로 읽어옴
+                const responseBody = await error.response.text();
+                console.error('오류 응답 본문:', responseBody);
+                // 구체적인 오류 메시지와 함께 에러 throw
+                throw new Error(`백엔드 API 호출 실패 (${error.response.status}): ${responseBody || '서버 오류'}`);
+            } catch (parsingError) {
+                // 응답 본문 파싱 중 오류 발생 시 대체 메시지
+                console.error('오류 응답 본문 파싱 실패:', parsingError);
+                throw new Error(`백엔드 API 호출 실패 (${error.response.status}) 및 응답 본문 확인 불가`);
+            }
+        } else if (error instanceof Error) {
+            // 일반 Error 인스턴스인 경우 그대로 다시 throw
+            throw error;
+        } else {
+            // 그 외 알 수 없는 타입의 오류 처리
+            throw new Error('인증 처리 중 알 수 없는 오류 발생');
+        }
+    }
 };

@@ -19,7 +19,7 @@ const getProviderStyles = (provider: SocialProvider) => {
                 backgroundColor: '#ffffff',
                 color: '#757575',
                 hoverColor: '#f2f2f2',
-                borderColor: '#DADCE0',
+                $borderColor: '#DADCE0',
                 logo: GoogleLogo,
                 text: 'Google로 로그인'
             };
@@ -28,7 +28,7 @@ const getProviderStyles = (provider: SocialProvider) => {
                 backgroundColor: '#FEE500',
                 color: '#000000',
                 hoverColor: '#FADA0A',
-                borderColor: 'transparent',
+                $borderColor: 'transparent',
                 logo: KakaoLogo,
                 text: '카카오로 로그인'
             };
@@ -37,7 +37,7 @@ const getProviderStyles = (provider: SocialProvider) => {
                 backgroundColor: '#03C75A',
                 color: '#ffffff',
                 hoverColor: '#02B350',
-                borderColor: 'transparent',
+                $borderColor: 'transparent',
                 logo: NaverLogo,
                 text: '네이버로 로그인'
             };
@@ -46,7 +46,7 @@ const getProviderStyles = (provider: SocialProvider) => {
                 backgroundColor: '#ffffff',
                 color: '#757575',
                 hoverColor: '#f2f2f2',
-                borderColor: '#DADCE0',
+                $borderColor: '#DADCE0',
                 logo: '',
                 text: '소셜 로그인'
             };
@@ -67,7 +67,7 @@ const SocialLoginButton: React.FC<SocialLoginButtonProps> = ({ provider }) => {
             backgroundColor={styles.backgroundColor}
             color={styles.color}
             hoverColor={styles.hoverColor}
-            borderColor={styles.borderColor}
+            $borderColor={styles.$borderColor}
         >
             <ButtonLogo src={styles.logo} alt={`${provider} 로고`} />
             <span>{styles.text}</span>
@@ -79,7 +79,7 @@ interface ButtonProps {
     backgroundColor: string;
     color: string;
     hoverColor: string;
-    borderColor: string;
+    $borderColor: string;
 }
 
 const StyledButton = styled.button<ButtonProps>`
@@ -92,7 +92,7 @@ const StyledButton = styled.button<ButtonProps>`
     border-radius: 8px;
     background-color: ${props => props.backgroundColor};
     color: ${props => props.color};
-    border: 1px solid ${props => props.borderColor};
+    border: 1px solid ${props => props.$borderColor};
     font-size: 15px;
     font-weight: 500;
     transition: all 0.3s ease;
