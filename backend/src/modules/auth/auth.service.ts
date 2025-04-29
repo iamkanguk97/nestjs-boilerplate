@@ -9,7 +9,7 @@ import { NaverStrategy } from './strategies/naver.strategy';
 
 @Injectable()
 export class AuthService {
-  private readonly socialLoginStrategyMap: Record<AuthType.OAUTH_PROVIDER, AuthType.SOCIAL_STRATEGY>;
+  private readonly socialLoginStrategyMap: Record<AuthType.OAuthProvider, AuthType.SocialStrategy>;
 
   constructor(
     private readonly kakaoStrategy: KakaoStrategy,
@@ -28,7 +28,7 @@ export class AuthService {
   /**
    * 소셜 로그인 기능
    */
-  public async createSocialLogin(provider: AuthType.OAUTH_PROVIDER, body: PostSocialLoginDto.Req) {
+  public async createSocialLogin(provider: AuthType.OAuthProvider, body: PostSocialLoginDto.Req) {
     const { socialAuthCode } = body;
 
     const strategy = this.socialLoginStrategyMap[provider];

@@ -17,7 +17,7 @@ export class AuthController {
    */
   @Post('social-login/:provider')
   public async postSocialLogin(
-    @Param('provider', OAuthProviderPipe) provider: AuthType.OAUTH_PROVIDER,
+    @Param('provider', OAuthProviderPipe) provider: AuthType.OAuthProvider,
     @Body() body: PostSocialLoginDto.Req
   ) {
     console.log(provider);
