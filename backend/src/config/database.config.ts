@@ -1,7 +1,7 @@
 import { Config } from './config.type';
 import { registerAs } from '@nestjs/config';
 import { IsBoolean, IsInt, IsOptional, IsString, Max, Min, ValidateIf } from 'class-validator';
-import { UserEntity } from 'src/apis/user/entities/user.entity';
+import { UserEntity } from 'src/modules/user/entities/user.entity';
 import { ConfigUtil } from 'src/utils/config.util';
 
 class DatabaseEnvironmentVariableValidator {
